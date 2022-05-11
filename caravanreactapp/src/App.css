@@ -6,7 +6,9 @@
   justify-content: space-around;
 }
 
-
+#playersHand ul li:hover{
+  background-color: #FFBF00;
+}
 
 /* APP STYLES */
 .App {
