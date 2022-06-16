@@ -6,13 +6,9 @@ import React from 'react';
 import Card from './components/Card.js';
 import Hand from './components/Hand.js';
 // import Tabel from './components/Tabel.js';
-import Track from './components/Track.js';
+import {Track} from './components/Track.js';
 
-
-
-
-
-  // Game 
+ // Game 
   class Game extends React.Component{
     constructor(props){
       super(props);
@@ -113,18 +109,7 @@ import Track from './components/Track.js';
         self.totalTracks(self);
       }
     }
-    jokerEffect(){
 
-    }
-    jackEffect(){
-
-    }
-    queenEffect(){
-
-    }
-    kingEffect(){
-
-    }
     //Function to calculate the total value of the cards placed on the tracks
     totalTracks(self){
       const tracks = self.state.tracks;
