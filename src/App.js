@@ -3,55 +3,15 @@ import './App.css';
 import axios from 'axios';
 import component from 'react';
 import React from 'react';
-
-//Child Component for individual card functionality
-function Card(props){
-  const self = props.parent;
-  return(
-    <li value={props.value}>{props.code}</li>
-  )
-
-}
-
-//Child Component to Display Cards on Track
-function Track(props){
-  const self = this;
-  const listCards = props.cards.map((card, index) => <li data-index={index} value={card.value} key={card.code}>{card.code}</li>);
-  //const listCards = props.cards.map((card, index) => <Card data-index={index} key={card.code} value={card.value} code={card.code} />);
-  return(
-      <a value={props.value} onClick={props.onClick} id={props.name}>
-        <h2>{props.name}</h2>
-        <p>{props.value}</p>
-        <p>{props.total}</p>
-        <ul>{listCards}</ul>
-      </a>
-  )
-}
+import Card from './components/Card.js';
+import Hand from './components/Hand.js';
+import Tabel from './components/Tabel.js';
+import Track from './components/Track.js';
 
 
-//Child Component to Display Cards in Hand
-function Hand(props){
-  const handCards = props.cards.map((card, index) => <li data-index={index} onClick={props.onClick} key={card.code}>{card.code}</li>);
-  return(
-    <div id={props.name}>
-      <ul>{handCards}</ul>
-    </div>
-  )
-}
-  //Table
-  class Table extends React.Component{
-    constructor(props){
-      super(props);
-      this.state={
 
-      }
-    }
-    render(){
-      return(
-        <div>The Table Component</div>
-      )
-    }
-  }
+
+
   // Game 
   class Game extends React.Component{
     constructor(props){
@@ -200,7 +160,7 @@ function Hand(props){
         })
         console.log()
         var i = i + 1;
-        self.state.track
+  
       });
     }
     newCard(self){
