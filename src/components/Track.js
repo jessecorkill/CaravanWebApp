@@ -2,6 +2,14 @@ import React, {useState, useEffect} from 'react';
 
 //Child Component to Display Cards on Track
 export const Track = (props) => {
+
+  //should have a invisible top layer only on first click that goes away after first card placement
+  const [hasCards, toggleHasCards] = useState(false)
+  function toggleDisplay(){
+    return(
+      "hasCards"
+    )
+  }
     
     //Array for displaying cards
     let cardsArr = []
@@ -24,11 +32,12 @@ export const Track = (props) => {
 
 
     return(
-        <a value={props.value} onClick={props.onClick} id={props.name}>
-          <h2>{props.name}</h2>
-          <p>{props.value}</p>
-          <p>{props.total}</p>
-          <ul>{displayCards}</ul>
-        </a>
+      <div>
+        <a className={toggleDisplay} value={props.value} onClick={props.onClick} id={props.name}></a>
+        <h2>{props.name}</h2>
+        <p>{props.value}</p>
+        <p>{props.total}</p>
+        <ul>{displayCards}</ul>
+      </div>
     )
   }

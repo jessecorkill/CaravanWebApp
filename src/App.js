@@ -41,42 +41,40 @@ import {Track} from './components/Track.js';
         ],
         tracksScore: [0,0,0]
       }
+
+      //Bind Functions
+      this.selectCard = this.selectCard.bind(this)
+      this.placeCard = this.placeCard.bind(this)
+      this.totalTracks = this.totalTracks.bind(this)
+      this.newCard = this.newCard.bind(this)
+      this.moveCard = this.moveCard.bind(this)
+      this.newDeck = this.newDeck.bind(this)
+      this.playerStart = this.playerStart.bind(this)
+      this.renderTrack = this.renderTrack.bind(this)
+
+
+
+
     }
-    renderTrack(i){
-      return(
-        <Track
-          onClick={this.props}
-          name={this.props}
-          cards={this.props}
-        />
-      )
-    }
-    renderHand(i){
-      return(
-        <Hand
-          name={this.props}
-          cards={this.props}          
-        />
-      )
-    }
+
     testFunc(){
       console.log('This Works!');
     }
-    selectCard(e, state){
+    selectCard(e){
       //TODO Get functionality to select a card and store the object in the state of the game
       //console.log(e.target.dataset.index);
 
-      state.setState({
+      this.setState({
         selectedCard: e.target.dataset.index,
       })
     }
 
-    placeCard(self, i, e){
+    placeCard(i, e){
       //identify the item that was clicked
       const elementType = e.target.localName;
-      const hand = self.state.playersHand;
-      const card = self.state.playersHand[self.state.selectedCard];
-      const tracks = self.state.tracks;
+      const hand = this.state.playersHand;
+      const card = this.state.playersHand[this.state.selectedCard];
+      const tracks = this.state.tracks;
       
       //If empty track was clicked
       if(elementType !== 'li'){
@@ -85,34 +83,34 @@ import {Track} from './components/Track.js';
         tracks[i].cards.push(card);
 
         //Removing Card from Hand
-        const start = self.state.selectedCard;
+        const start = this.state.selectedCard;
         hand.splice(start, 1);
 
-        self.setState({
+        this.setState({
           tracks: tracks,
           playersHand: hand,
         })
-        self.totalTracks(self);
+        this.totalTracks(this);
       }else{
         //Get index of the card clicked on
         const targetCardIndex = e.target.dataset.index;
         //Place the card behind the card clicked on
         tracks[i].cards.splice(targetCardIndex + 1, 0, card);
         //Removing Card from Hand
-        const start = self.state.selectedCard;
+        const start = this.state.selectedCard;
         hand.splice(start, 1);
 
-        self.setState({
+        this.setState({
           tracks: tracks,
           playersHand: hand,
         })
-        self.totalTracks(self);
+        this.totalTracks(this);
       }
     }
 
     //Function to calculate the total value of the cards placed on the tracks
-    totalTracks(self){
-      const tracks = self.state.tracks;
+    totalTracks(){
+      const tracks = this.state.tracks;
       tracks.forEach(track => {
         var total = track.score;
         var i = 0;
@@ -135,7 +133,7 @@ import {Track} from './components/Track.js';
               //To Do! Switch this to pull from the new source of Total (in master component)
               total = total + cardObj.value; 
 
-              self.setState({
+              this.setState({
                 tracks: null,
               })
 
@@ -148,16 +146,16 @@ import {Track} from './components/Track.js';
   
       });
     }
-    newCard(self){
+    newCard(){
       axios({
         method: 'get',
-        url: 'https://deckofcardsapi.com/api/deck/'+ self.state.playersDeckID +'/draw/?count=1',
+        url: 'https://deckofcardsapi.com/api/deck/'+ this.state.playersDeckID +'/draw/?count=1',
         responseType: 'json',
       })
 
       .then(function (response){    
         var res = response.data.cards[0];
-        var currentHand = self.state.playersHand;  
+        var currentHand = this.state.playersHand;  
         currentHand.push(res);
         console.log(res);
         //Correct Obj
@@ -165,7 +163,7 @@ import {Track} from './components/Track.js';
         //Array Full of Objs
 
 
-        self.setState({
+        this.setState({
           playersHand: currentHand,
         })
       })
@@ -179,19 +177,19 @@ import {Track} from './components/Track.js';
       })     
     }
 
-    moveCard(i){
+    moveCard(){
       //Place Card On Track
-      const selectedCard = i.state.playersHand[0];
-      i.state.tracks[0].cards.push(selectedCard);
+      const selectedCard = this.state.playersHand[0];
+      this.state.tracks[0].cards.push(selectedCard);
       //Remove Card from Hand & Replace
-      const altHand = i.state.playersHand
+      const altHand = this.state.playersHand
       altHand.shift();
-      i.setState({
+      this.setState({
         playersHand: altHand,
       })
     }
 
-    newDeck(self){
+    newDeck(){
       axios({
         method: 'get',
         url: 'https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1',
@@ -200,7 +198,7 @@ import {Track} from './components/Track.js';
 
         .then(function (response) {
           console.log(response.data.deck_id);
-          self.setState({
+          this.setState({
             playersDeckID: response.data.deck_id,
           });
         })
@@ -213,17 +211,17 @@ import {Track} from './components/Track.js';
         })
 
     }
-    playerStart(i){
+    playerStart(){
         axios({
           method: 'get',
-          url: 'https://deckofcardsapi.com/api/deck/'+ i.state.playersDeckID +'/draw/?count=8',
+          url: 'https://deckofcardsapi.com/api/deck/'+ this.state.playersDeckID +'/draw/?count=8',
           responseType: 'json'
         })
 
         .then(function (response){    
           console.log(response.data);
           const res = response.data;
-          i.setState({
+          this.setState({
             playersHand: res.cards,
           })
         })
@@ -236,6 +234,11 @@ import {Track} from './components/Track.js';
           }
         })      
     }
+    renderTrack(i){
+      return(
+        <Track name={this.state.tracks[i].name} value={this.state.tracks[i].score} onClick={this.placeCard(i)} cards={this.state.tracks[i].cards} />
+      )
+    }
     
 
     //Initialize Game
@@ -243,7 +246,7 @@ import {Track} from './components/Track.js';
       console.log('Game Mounted');
 
       // GET request for obtaining a deck of shuffled cards
-      this.newDeck(this);
+      this.newDeck()
 
     }
 
@@ -251,14 +254,14 @@ import {Track} from './components/Track.js';
         return(
           <div>
             <h1>Caravan</h1>
-            <button onClick={() => this.playerStart(this)}>Deal</button>
-            <button onClick={() => this.moveCard(this)}>Put first card on track.</button>
-            <button onClick={() => this.newCard(this)}>End Turn</button>
+            <button onClick={this.playerStart()}>Deal</button>
+            <button onClick={this.moveCard()}>Put first card on track.</button>
+            <button onClick={this.newCard()}>End Turn</button>
             <div id='playersSide'>
-              <Track name={this.state.tracks[0].name} value={this.state.tracks[0].score} onClick={(e) => this.placeCard(this, 0, e)} cards={this.state.tracks[0].cards} />
-              <Track name={this.state.tracks[1].name} value={this.state.tracks[1].score} onClick={(e) => this.placeCard(this, 1, e)} cards={this.state.tracks[1].cards} /> 
-              <Track name={this.state.tracks[2].name} value={this.state.tracks[2].score} onClick={(e) => this.placeCard(this, 2, e)} cards={this.state.tracks[2].cards} />  
-              <Hand name="playersHand" onClick={(i) => this.selectCard(i, this)} cards={this.state.playersHand} />              
+              {this.renderTrack(0)} 
+              {this.renderTrack(1)}
+              {this.renderTrack(2)}
+              <Hand name="playersHand" onClick={this.selectCard} cards={this.state.playersHand} />              
             </div>
             <div>
               <h1>{this.state.selectedCard}</h1>
