@@ -1,8 +1,19 @@
+import React from "react";
+
 //Child Component for individual card functionality
-export function Card(props){
-    const self = props.parent;
-    return(
-      <li value={props.value}>{props.code}</li>
-    )
-  
+export class Card extends React.Component{
+  constructor(props){
+    this.super(props)
+    this.state = {
+
+    }
   }
+  handleCardClick = () => {
+    console.log("Card Clicked")
+  }
+  render(){
+    return(
+      <li value={props.value} onClick={this.handleCardClick}>{props.code}</li>
+    )
+  }  
+}

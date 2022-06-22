@@ -4,7 +4,7 @@ import React, {useState, useEffect} from 'react';
 export const Track = (props) => {
 
   //should have a invisible top layer only on first click that goes away after first card placement
-  const [hasCards, toggleHasCards] = useState(false)
+  const [isEmpty, toggleIsEmpty] = useState(true)
   function toggleDisplay(){
     return(
       "hasCards"
