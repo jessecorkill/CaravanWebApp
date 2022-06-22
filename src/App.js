@@ -7,7 +7,7 @@ import Card from './components/Card.js';
 import Hand from './components/Hand.js';
 // import Tabel from './components/Tabel.js';
 import {Track} from './components/Track.js';
-import {playerStart, genDecks, newCard} from './providers/data.js'
+import {drawFromDeck, genDecks} from './providers/data.js'
 
  // Game 
   class Game extends React.Component{
