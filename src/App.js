@@ -7,7 +7,7 @@ import Card from './components/Card.js';
 import Hand from './components/Hand.js';
 // import Tabel from './components/Tabel.js';
 import {Track} from './components/Track.js';
-import {drawFromDeck, genDecks} from './providers/data.js'
+import {drawFromDeck, genDecks} from './providers/deckOfCards.js'
 
  // Game 
   class Game extends React.Component{
@@ -132,18 +132,13 @@ import {drawFromDeck, genDecks} from './providers/data.js'
 
               this.setState({
                 tracks: null,
-              })
-
-
-              
+              })              
           }
         })
         console.log()
-        var i = i + 1;
-  
+        var i = i + 1;  
       });
     }
-
 
     moveCard(){
       //Place Card On Track
@@ -160,7 +155,7 @@ import {drawFromDeck, genDecks} from './providers/data.js'
 
     renderTrack(i){
       return(
-        <Track name={this.state.tracks[i].name} value={this.state.tracks[i].score} onClick={this.placeCard(i)} cards={this.state.tracks[i].cards} />
+        <Track name={this.state.tracks[i].name} value={this.state.tracks[i].score} onClick={() => this.placeCard(i)} cards={this.state.tracks[i].cards} />
       )
     }
     
@@ -168,9 +163,11 @@ import {drawFromDeck, genDecks} from './providers/data.js'
     //Initialize Game
     componentDidMount(){
       console.log('Game Mounted');
-
       // GET request for obtaining a deck of shuffled cards
-      newDeck()
+      let deckIDs = genDecks(1)
+      this.setState({
+        playersDeckID: deckIDs
+      })
 
     }
 
@@ -178,9 +175,9 @@ import {drawFromDeck, genDecks} from './providers/data.js'
         return(
           <div>
             <h1>Caravan</h1>
-            <button onClick={playerStart(this.state.playersDeckID)}>Deal</button>
-            <button onClick={this.moveCard()}>Put first card on track.</button>
-            <button onClick={newCard()}>End Turn</button>
+            <button onClick={ () => drawFromDeck(this.state.playersDeckID[0], 8)}>Deal</button>
+            <button onClick={this.moveCard}>Put first card on track.</button>
+            <button onClick={ () => drawFromDeck(this.playersDeckID[0], 1)}>End Turn</button>
             <div id='playersSide'>
               {this.renderTrack(0)} 
               {this.renderTrack(1)}

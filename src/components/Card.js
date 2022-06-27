@@ -1,7 +1,7 @@
 import React from "react";
 
 //Child Component for individual card functionality
-export class Card extends React.Component{
+export default class Card extends React.Component{
   constructor(props){
     this.super(props)
     this.state = {

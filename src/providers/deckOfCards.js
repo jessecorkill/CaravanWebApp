@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const genDecks = (count) => {
     //console.log("newDeck ran")
-    let deckIDs = []
+    let deckIDs = ""
     axios({
       method: 'get',
       url: 'https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count='+count,
@@ -11,7 +11,7 @@ export const genDecks = (count) => {
 
       .then(function (response) {
         //console.log(response.data.deck_id);
-        genDecks.push(response.data.deck_id)
+        let deckIDs = typeof(response.data.deck_id)
       })
       .catch(function(error){
         if(error.response){
@@ -20,7 +20,6 @@ export const genDecks = (count) => {
         //   console.log(error.response.headers);
         }
       })
-
       return deckIDs;
   }
 
