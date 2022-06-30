@@ -11,7 +11,7 @@ export const genDecks = (count) => {
 
       .then(function (response) {
         //console.log(response.data.deck_id);
-        let deckIDs = typeof(response.data.deck_id)
+        deckIDs = typeof(response.data.deck_id)
       })
       .catch(function(error){
         if(error.response){
