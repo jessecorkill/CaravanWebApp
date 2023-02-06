@@ -7,6 +7,7 @@ import Card from './components/Card.js';
 import Hand from './components/Hand.js';
 // import Tabel from './components/Tabel.js';
 import {Track} from './components/Track.js';
+import {drawFromDeck, genDecks} from './providers/old_deckOfCards.js'
 
  // Game 
   class Game extends React.Component{
@@ -46,10 +47,10 @@ import {Track} from './components/Track.js';
       this.selectCard = this.selectCard.bind(this)
       this.placeCard = this.placeCard.bind(this)
       this.totalTracks = this.totalTracks.bind(this)
-      this.newCard = this.newCard.bind(this)
+      //this.newCard = this.newCard.bind(this)
       this.moveCard = this.moveCard.bind(this)
-      this.newDeck = this.newDeck.bind(this)
-      this.playerStart = this.playerStart.bind(this)
+      // this.newDeck = this.newDeck.bind(this)
+      //this.playerStart = this.playerStart.bind(this)
       this.renderTrack = this.renderTrack.bind(this)
 
 
@@ -57,9 +58,6 @@ import {Track} from './components/Track.js';
 
     }
 
-    testFunc(){
-      console.log('This Works!');
-    }
     selectCard(e){
       //TODO Get functionality to select a card and store the object in the state of the game
       //console.log(e.target.dataset.index);
@@ -69,7 +67,7 @@ import {Track} from './components/Track.js';
       })
     }
 
-    placeCard(i, e){
+    placeCard(trackIndex, e){
       //identify the item that was clicked
       const elementType = e.target.localName;
       const hand = this.state.playersHand;
@@ -80,7 +78,7 @@ import {Track} from './components/Track.js';
       if(elementType !== 'li'){
         console.log("Track was clicked");
         //TODO Get functionality to select a track and store the object in the state of the game
-        tracks[i].cards.push(card);
+        tracks[trackIndex].cards.push(card);
 
         //Removing Card from Hand
         const start = this.state.selectedCard;
@@ -90,12 +88,11 @@ import {Track} from './components/Track.js';
           tracks: tracks,
           playersHand: hand,
         })
-        this.totalTracks(this);
       }else{
         //Get index of the card clicked on
         const targetCardIndex = e.target.dataset.index;
         //Place the card behind the card clicked on
-        tracks[i].cards.splice(targetCardIndex + 1, 0, card);
+        tracks[trackIndex].cards.splice(targetCardIndex + 1, 0, card);
         //Removing Card from Hand
         const start = this.state.selectedCard;
         hand.splice(start, 1);
@@ -135,46 +132,12 @@ import {Track} from './components/Track.js';
 
               this.setState({
                 tracks: null,
-              })
-
-
-              
+              })              
           }
         })
         console.log()
-        var i = i + 1;
-  
+        var i = i + 1;  
       });
-    }
-    newCard(){
-      axios({
-        method: 'get',
-        url: 'https://deckofcardsapi.com/api/deck/'+ this.state.playersDeckID +'/draw/?count=1',
-        responseType: 'json',
-      })
-
-      .then(function (response){    
-        var res = response.data.cards[0];
-        var currentHand = this.state.playersHand;  
-        currentHand.push(res);
-        console.log(res);
-        //Correct Obj
-        console.log(currentHand);
-        //Array Full of Objs
-
-
-        this.setState({
-          playersHand: currentHand,
-        })
-      })
-
-      .catch(function(error){
-        if(error.response){
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        }
-      })     
     }
 
     moveCard(){
@@ -189,64 +152,22 @@ import {Track} from './components/Track.js';
       })
     }
 
-    newDeck(){
-      axios({
-        method: 'get',
-        url: 'https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1',
-        responseType: 'json',
-      })
 
-        .then(function (response) {
-          console.log(response.data.deck_id);
-          this.setState({
-            playersDeckID: response.data.deck_id,
-          });
-        })
-        .catch(function(error){
-          if(error.response){
-            console.log(error.response.data);
-            console.log(error.response.status);
-            console.log(error.response.headers);
-          }
-        })
-
-    }
-    playerStart(){
-        axios({
-          method: 'get',
-          url: 'https://deckofcardsapi.com/api/deck/'+ this.state.playersDeckID +'/draw/?count=8',
-          responseType: 'json'
-        })
-
-        .then(function (response){    
-          console.log(response.data);
-          const res = response.data;
-          this.setState({
-            playersHand: res.cards,
-          })
-        })
-
-        .catch(function(error){
-          if(error.response){
-            console.log(error.response.data);
-            console.log(error.response.status);
-            console.log(error.response.headers);
-          }
-        })      
-    }
     renderTrack(i){
       return(
-        <Track name={this.state.tracks[i].name} value={this.state.tracks[i].score} onClick={this.placeCard(i)} cards={this.state.tracks[i].cards} />
+        <Track name={this.state.tracks[i].name} value={this.state.tracks[i].score} onClick={() => this.placeCard(i)} cards={this.state.tracks[i].cards} />
       )
     }
     
-
+    
     //Initialize Game
     componentDidMount(){
       console.log('Game Mounted');
-
       // GET request for obtaining a deck of shuffled cards
-      this.newDeck()
+      let deckIDs = genDecks(1)
+      this.setState({
+        playersDeckID: deckIDs
+      })
 
     }
 
@@ -254,9 +175,9 @@ import {Track} from './components/Track.js';
         return(
           <div>
             <h1>Caravan</h1>
-            <button onClick={this.playerStart()}>Deal</button>
-            <button onClick={this.moveCard()}>Put first card on track.</button>
-            <button onClick={this.newCard()}>End Turn</button>
+            <button onClick={ () => drawFromDeck(this.state.playersDeckID[0], 8)}>Deal</button>
+            <button onClick={this.moveCard}>Put first card on track.</button>
+            <button onClick={ () => drawFromDeck(this.playersDeckID[0], 1)}>End Turn</button>
             <div id='playersSide'>
               {this.renderTrack(0)} 
               {this.renderTrack(1)}
@@ -266,10 +187,7 @@ import {Track} from './components/Track.js';
             <div>
               <h1>{this.state.selectedCard}</h1>
             </div>
-
           </div>
-
-
         );
       }
 

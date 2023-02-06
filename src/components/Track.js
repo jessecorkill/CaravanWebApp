@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
+import Card from './Card.js'
 
 //Child Component to Display Cards on Track
 export const Track = (props) => {
 
   //should have a invisible top layer only on first click that goes away after first card placement
-  const [hasCards, toggleHasCards] = useState(false)
+  const [isEmpty, toggleIsEmpty] = useState(true)
   function toggleDisplay(){
     return(
       "hasCards"
@@ -26,7 +27,7 @@ export const Track = (props) => {
       //Check if Special or Not
       
     })
-    const displayCards = props.cards.map((card, index) => <li data-index={index} value={card.value} key={card.code}>{card.code}</li>);
+    const displayCards = props.cards.map((card, index) => <Card data-index={index} value={card.value} key={card.code}>{card.code}</Card>);
 
     //const listCards = props.cards.map((card, index) => <Card data-index={index} key={card.code} value={card.value} code={card.code} />);
 
