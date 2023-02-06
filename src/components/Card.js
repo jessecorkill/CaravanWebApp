@@ -5,7 +5,7 @@ export default class Card extends React.Component{
   constructor(props){
     this.super(props)
     this.state = {
-
+      
     }
   }
   handleCardClick = () => {
