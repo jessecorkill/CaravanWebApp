@@ -508,8 +508,8 @@ export const deck =
         ],
     }
 ]
-export const combinedDeck = {
-    'T0' :
+export const combinedDeck = [
+
     {
         'parentDeck' : "Tops",
         'type' : "joker",
@@ -517,7 +517,7 @@ export const combinedDeck = {
         'shorthand' : "jH",
         'value' : null, 
     },
-    'T1' : 
+
     {            
         'parentDeck' : "Tops",
         'type' : "Ace",
@@ -525,7 +525,7 @@ export const combinedDeck = {
         'shorthand' : "AH",
         'value' : 1
     },
-    'T2' :
+
     {
         'parentDeck' : "Tops",
         'type' : "two",
@@ -533,7 +533,7 @@ export const combinedDeck = {
         'shorthand' : "2H", 
         'value' : 2,
     },
-    'T3' :
+
     {
         'parentDeck' : "Tops",
         'type' : "three",
@@ -541,7 +541,7 @@ export const combinedDeck = {
         'shorthand' : "3H", 
         'value' : 3,
     },
-    'T4' :
+
     {
         'parentDeck' : "Tops",
         'type' : "four",
@@ -549,7 +549,7 @@ export const combinedDeck = {
         'shorthand' : "4H", 
         'value' : 4,
     },
-    'T5' :
+
     {
         'parentDeck' : "Tops",
         'type' : "five",
@@ -557,7 +557,7 @@ export const combinedDeck = {
         'shorthand' : "5H", 
         'value' : 5,
     },
-    'T6' :
+
     {
         'parentDeck' : "Tops",
         'type' : "six",
@@ -565,7 +565,7 @@ export const combinedDeck = {
         'shorthand' : "6H", 
         'value' : 6,
     },
-    'T7' :
+
     {
         'parentDeck' : "Tops",
         'type' : "seven",
@@ -573,7 +573,7 @@ export const combinedDeck = {
         'shorthand' : "7H", 
         'value' : 7,
     },
-    'T8' :
+
     {
         'parentDeck' : "Tops",
         'type' : "eight",
@@ -581,7 +581,7 @@ export const combinedDeck = {
         'shorthand' : "8H", 
         'value' : 8,
     },
-    'T9' :
+
     {
         'parentDeck' : "Tops",
         'type' : "nine",
@@ -589,7 +589,7 @@ export const combinedDeck = {
         'shorthand' : "9H", 
         'value' : 9,
     },
-    'T10' :
+
     {
         'parentDeck' : "Tops",
         'type' : "ten",
@@ -597,7 +597,7 @@ export const combinedDeck = {
         'shorthand' : "10H", 
         'value' : 10,
     },
-    'T11' :
+
     {
         'parentDeck' : "Tops",
         'type' : "jack",
@@ -605,7 +605,7 @@ export const combinedDeck = {
         'shorthand' : "JH", 
         'value' : null,
     },
-    'T12' :
+
     {
         'parentDeck' : "Tops",
         'type' : "queen",
@@ -613,7 +613,7 @@ export const combinedDeck = {
         'shorthand' : "QH",
         'value' : null, 
     },
-    'T13' :
+
     {
         'parentDeck' : "Tops",
         'type' : "king",
@@ -621,7 +621,7 @@ export const combinedDeck = {
         'shorthand' : "KH", 
         'value' : null,
     },
-    'G0' :
+
     {
         'parentDeck' : "Gomorah",
         'type' : "joker",
@@ -629,7 +629,7 @@ export const combinedDeck = {
         'shorthand' : "jH", 
         'value' : null,
     },
-    'G1' : 
+
     {            
         'parentDeck' : "Gomorah",
         'type' : "Ace",
@@ -637,7 +637,7 @@ export const combinedDeck = {
         'shorthand' : "AH",
         'value' : 1,
     },
-    'G2' :
+
     {
         'parentDeck' : "Gomorah",
         'type' : "two",
@@ -645,7 +645,7 @@ export const combinedDeck = {
         'shorthand' : "2H", 
         'value' : 2,
     },
-    'G3' :
+
     {
         'parentDeck' : "Gomorah",
         'type' : "three",
@@ -653,7 +653,7 @@ export const combinedDeck = {
         'shorthand' : "3H", 
         'value' : 3,
     },
-    'G4' :
+
     {
         'parentDeck' : "Gomorah",
         'type' : "four",
@@ -661,7 +661,7 @@ export const combinedDeck = {
         'shorthand' : "4H", 
         'value' : 4,
     },
-    'G5' :
+
     {
         'parentDeck' : "Gomorah",
         'type' : "five",
@@ -669,7 +669,7 @@ export const combinedDeck = {
         'shorthand' : "5H", 
         'value' : 5,
     },
-    'G6' :
+
     {
         'parentDeck' : "Gomorah",
         'type' : "six",
@@ -677,7 +677,7 @@ export const combinedDeck = {
         'shorthand' : "6H", 
         'value' : 6,
     },
-    'G7' :
+
     {
         'parentDeck' : "Gomorah",
         'type' : "seven",
@@ -685,7 +685,7 @@ export const combinedDeck = {
         'shorthand' : "7H", 
         'value' : 7,
     },
-    'G8' :
+
     {
         'parentDeck' : "Gomorah",
         'type' : "eight",
@@ -693,7 +693,7 @@ export const combinedDeck = {
         'shorthand' : "8H", 
         'value' : 8,
     },
-    'G9' :
+
     {
         'parentDeck' : "Gomorah",
         'type' : "nine",
@@ -701,7 +701,7 @@ export const combinedDeck = {
         'shorthand' : "9H", 
         'value' : 9,
     },
-    'G10' :
+
     {
         'parentDeck' : "Gomorah",
         'type' : "ten",
@@ -709,7 +709,7 @@ export const combinedDeck = {
         'shorthand' : "10H", 
         'value' : 10,
     },
-    'G11' :
+
     {
         'parentDeck' : "Gomorah",
         'type' : "jack",
@@ -717,7 +717,7 @@ export const combinedDeck = {
         'shorthand' : "JH",
         'value' : null, 
     },
-    'G12' :
+
     {
         'parentDeck' : "Gomorah",
         'type' : "queen",
@@ -725,7 +725,7 @@ export const combinedDeck = {
         'shorthand' : "QH", 
         'value' : null,
     },
-    'G13' :
+
     {
         'parentDeck' : "Gomorah",
         'type' : "king",
@@ -733,7 +733,7 @@ export const combinedDeck = {
         'shorthand' : "KH", 
         'value' : null,
     },
-    'L0' :
+
     {
         'parentDeck' : "Lucky 38",
         'type' : "joker",
@@ -741,7 +741,7 @@ export const combinedDeck = {
         'shorthand' : "jH",
         'value' : null, 
     },
-    'L1' : 
+
     {            
         'parentDeck' : "Lucky 38",
         'type' : "Ace",
@@ -749,7 +749,7 @@ export const combinedDeck = {
         'shorthand' : "AH",
         'value' : 1,
     },
-    'L2' :
+
     {
         'parentDeck' : "Lucky 38",
         'type' : "two",
@@ -757,7 +757,7 @@ export const combinedDeck = {
         'shorthand' : "2H", 
         'value' : 2,
     },
-    'L3' :
+
     {
         'parentDeck' : "Lucky 38",
         'type' : "three",
@@ -765,7 +765,7 @@ export const combinedDeck = {
         'shorthand' : "3H", 
         'value' : 3,
     },
-    'L4' :
+
     {
         'parentDeck' : "Lucky 38",
         'type' : "four",
@@ -773,7 +773,7 @@ export const combinedDeck = {
         'shorthand' : "4H", 
         'value' : 4,
     },
-    'L5' :
+
     {
         'parentDeck' : "Lucky 38",
         'type' : "five",
@@ -781,7 +781,7 @@ export const combinedDeck = {
         'shorthand' : "5H", 
         'value' : 5,
     },
-    'L6' :
+
     {
         'parentDeck' : "Lucky 38",
         'type' : "six",
@@ -789,7 +789,7 @@ export const combinedDeck = {
         'shorthand' : "6H", 
         'value' : 6,
     },
-    'L7' :
+
     {
         'parentDeck' : "Lucky 38",
         'type' : "seven",
@@ -797,7 +797,7 @@ export const combinedDeck = {
         'shorthand' : "7H", 
         'value' : 7,
     },
-    'L8' :
+
     {
         'parentDeck' : "Lucky 38",
         'type' : "eight",
@@ -805,7 +805,7 @@ export const combinedDeck = {
         'shorthand' : "8H", 
         'value' : 8,
     },
-    'L9' :
+
     {
         'parentDeck' : "Lucky 38",
         'type' : "nine",
@@ -813,7 +813,7 @@ export const combinedDeck = {
         'shorthand' : "9H", 
         'value' : 9,
     },
-    'L10' :
+    
     {
         'parentDeck' : "Lucky 38",
         'type' : "ten",
@@ -821,7 +821,7 @@ export const combinedDeck = {
         'shorthand' : "10H", 
         'value' : 10,
     },
-    'L11' :
+    
     {
         'parentDeck' : "Lucky 38",
         'type' : "jack",
@@ -829,7 +829,7 @@ export const combinedDeck = {
         'shorthand' : "JH", 
         'value' : null,
     },
-    'L12' :
+    
     {
         'parentDeck' : "Lucky 38",
         'type' : "queen",
@@ -837,7 +837,7 @@ export const combinedDeck = {
         'shorthand' : "QH", 
         'value' : null,
     },
-    'L13' :
+    
     {
         'parentDeck' : "Lucky 38",
         'type' : "king",
@@ -845,7 +845,7 @@ export const combinedDeck = {
         'shorthand' : "KH", 
         'value' : null,
     },
-    'U0' :
+    
     {
         'parentDeck' : "Ultra-Luxe",
         'type' : "joker",
@@ -853,7 +853,7 @@ export const combinedDeck = {
         'shorthand' : "jH", 
         'value' : null,
     },
-    'U1' : 
+    
     {            
         'parentDeck' : "Ultra-Luxe",
         'type' : "Ace",
@@ -861,7 +861,7 @@ export const combinedDeck = {
         'shorthand' : "AH",
         'value' : 1,
     },
-    'U2' :
+    
     {
         'parentDeck' : "Ultra-Luxe",
         'type' : "two",
@@ -869,7 +869,7 @@ export const combinedDeck = {
         'shorthand' : "2H", 
         'value' : 2,
     },
-    'U3' :
+    
     {
         'parentDeck' : "Ultra-Luxe",
         'type' : "three",
@@ -877,7 +877,7 @@ export const combinedDeck = {
         'shorthand' : "3H", 
         'value' : 3,
     },
-    'U4' :
+    
     {
         'parentDeck' : "Ultra-Luxe",
         'type' : "four",
@@ -885,7 +885,7 @@ export const combinedDeck = {
         'shorthand' : "4H", 
         'value' : 4,
     },
-    'U5' :
+    
     {
         'parentDeck' : "Ultra-Luxe",
         'type' : "five",
@@ -893,7 +893,7 @@ export const combinedDeck = {
         'shorthand' : "5H", 
         'value' : 5,
     },
-    'U6' :
+    
     {
         'parentDeck' : "Ultra-Luxe",
         'type' : "six",
@@ -901,7 +901,7 @@ export const combinedDeck = {
         'shorthand' : "6H", 
         'value' : 6,
     },
-    'U7' :
+    
     {
         'parentDeck' : "Ultra-Luxe",
         'type' : "seven",
@@ -909,7 +909,7 @@ export const combinedDeck = {
         'shorthand' : "7H", 
         'value' : 7,
     },
-    'U8' :
+    
     {
         'parentDeck' : "Ultra-Luxe",
         'type' : "eight",
@@ -917,7 +917,7 @@ export const combinedDeck = {
         'shorthand' : "8H", 
         'value' : 8,
     },
-    'U9' :
+    
     {
         'parentDeck' : "Ultra-Luxe",
         'type' : "nine",
@@ -925,7 +925,7 @@ export const combinedDeck = {
         'shorthand' : "9H", 
         'value' : 9,
     },
-    'U10' :
+    
     {
         'parentDeck' : "Ultra-Luxe",
         'type' : "ten",
@@ -933,7 +933,7 @@ export const combinedDeck = {
         'shorthand' : "10H", 
         'value' : 10,
     },
-    'U11' :
+    
     {
         'parentDeck' : "Ultra-Luxe",
         'type' : "jack",
@@ -941,7 +941,7 @@ export const combinedDeck = {
         'shorthand' : "JH", 
         'value' : null,
     },
-    'U12' :
+    
     {
         'parentDeck' : "Ultra-Luxe",
         'type' : "queen",
@@ -949,7 +949,7 @@ export const combinedDeck = {
         'shorthand' : "QH", 
         'value' : null,
     },
-    'U13' :
+    
     {
         'parentDeck' : "Ultra-Luxe",
         'type' : "king",
@@ -957,98 +957,98 @@ export const combinedDeck = {
         'shorthand' : "KH", 
         'value' : null,
     },
-    'S0': {
+     {
         'parentDeck' : "Sierra Madre",
         'type' : "joker",
         'suit' : "hearts",
         'shorthand' : "jH", 
         'value' : null,
     },
-    'S1': {            
+     {            
         'parentDeck' : "Sierra Madre",
         'type' : "Ace",
         'suit' : "hearts",
         'shorthand' : "AH",
         'value' : 1,
     },
-    'S2': {
+     {
         'parentDeck' : "Sierra Madre",
         'type' : "two",
         'suit' : "hearts",
         'shorthand' : "2H", 
         'value' : 2,
     },
-    'S3': {
+     {
         'parentDeck' : "Sierra Madre",
         'type' : "three",
         'suit' : "hearts",
         'shorthand' : "3H", 
         'value' : 3,
     },
-    'S4': {
+     {
         'parentDeck' : "Sierra Madre",
         'type' : "four",
         'suit' : "hearts",
         'shorthand' : "4H",
         'value' : 4, 
     },
-    'S5': {
+     {
         'parentDeck' : "Sierra Madre",
         'type' : "five",
         'suit' : "hearts",
         'shorthand' : "5H", 
         'value' : 5,
     },
-    'S6': {
+     {
         'parentDeck' : "Sierra Madre",
         'type' : "six",
         'suit' : "hearts",
         'shorthand' : "6H", 
         'value' : 6,
     },
-    'S7':{
+    {
         'parentDeck' : "Sierra Madre",
         'type' : "seven",
         'suit' : "hearts",
         'shorthand' : "7H", 
         'value' : 7,
     },
-    'S8':{
+    {
         'parentDeck' : "Sierra Madre",
         'type' : "eight",
         'suit' : "hearts",
         'shorthand' : "8H", 
         'value' : 8,
     },
-    'S9':{
+    {
         'parentDeck' : "Sierra Madre",
         'type' : "nine",
         'suit' : "hearts",
         'shorthand' : "9H", 
         'value' : 9,
     },
-    'S10':{
+    {
         'parentDeck' : "Sierra Madre",
         'type' : "ten",
         'suit' : "hearts",
         'shorthand' : "10H", 
         'value' : 10,
     },
-    'S11':{
+    {
         'parentDeck' : "Sierra Madre",
         'type' : "jack",
         'suit' : "hearts",
         'shorthand' : "JH", 
         'value' : null,
     },
-    'S12':{
+    {
         'parentDeck' : "Sierra Madre",
         'type' : "queen",
         'suit' : "hearts",
         'shorthand' : "QH", 
         'value' : null,
     },
-    'S13':{
+    {
         'parentDeck' : "Sierra Madre",
         'type' : "king",
         'suit' : "hearts",
@@ -1056,4 +1056,4 @@ export const combinedDeck = {
         'value' : null,
     },
 
-}
+]

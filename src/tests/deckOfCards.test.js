@@ -15,7 +15,7 @@ import Game from '../App';
 
 //newDeck should return something
 test('genDecks gives ID', () =>{
-    expect(genDecks(1)).toBe(true)
+    expect(genDecks(1).length > 0).toBe(true)
 })
 
 

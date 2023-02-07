@@ -1,10 +1,59 @@
 import { genDecks, drawFromDeck } from "./deckOfCards";
 import { jokerPlaced, jackPlaced, queenPlaced, kingPlaced } from "./faceCardFuncitons";
-export var CaravanGame = () => {
+export var CaravanGame = (debug, testMove, testState) => {
+    var tracks = 'test';
+    var history = [];
+    var turn;
+    var players;
+    //check if the game has started
+    if(typeof(turn) === 'undefined'){
+        //setup game with defaults
+        setUpGame();
+    }
+
+    //Handle Debug Args
+    //debug array is 
+    switch(debug){
+        case 'getState':
+            return gameState();
+            break
+        case 'tryMove':
+            load(testState)
+            moveCard(testMove.player, testMove.card, testMove.track, testMove.index)
+            return gameState()
+            break
+    }
+  
+
+    //function to retrieve current game state
+    function getGameState(){
+        let game = [
+            tracks,
+            players,
+            turn,
+        ]
+        return game
+    }
+
+    //function to load any point in history or customized card placements
+    function load(tracksToLoad){
+        //Set up board with new setup
+        tracks = tracksToLoad
+        //Re-Score each track
+        evaluateTrack(0)
+        evaluateTrack(1)
+        evaluateTrack(2)
+        evaluateTrack(3)
+        evaluateTrack(4)
+        evaluateTrack(5)
+        //Check if tracks have a winner
+        checkForWin()
+    }
+
     //Clear score, set tracks to default values, clear history, draw new decks for each player, and draw 5 cards
     function setUpGame(){
         //Set tracks to default values
-        var tracks = [
+        tracks = [
             {
                 name: "Boneyard",
                 score: 0,
@@ -43,20 +92,21 @@ export var CaravanGame = () => {
               },]
 
         //Clear History
-        var history = [];
+        history = [];
         //Generate new deck for player 1
-        var players = [{'winner' : false, 'deck': [], 'hand' : []},{'winner' : false, 'deck': [], 'hand' : []}]
+        players = [{'winner' : false, 'deck': [], 'hand' : []},{'winner' : false, 'deck': [], 'hand' : []}]
         players[0].deck = genDecks()
         //Draw 8 cards
-        players[0].hand = players[0].deck.slice(8)
-        players[0].deck = players[0].deck.slice(0,8);
+        players[0].deck = players[0].deck.slice(8)
+        players[0].hand = players[0].deck.slice(0,8);
         //Generate new deck for player 2
         players[1].deck = genDecks()
         //Draw 8 cards
-        players[1].hand = players[1].deck.slice(8)
-        players[1].deck = players[1].deck.slice(0,8);
+        players[1].deck = players[1].deck.slice(8)
+        players[1].hand = players[1].deck.slice(0,8);
         //Set it to player 1's turn
         var turn = 0;
+        
 
     }
 
@@ -69,7 +119,7 @@ export var CaravanGame = () => {
     }
 
     //Function to check each track for winning conditions
-    function checkForWin(){        
+    function checkForWin(player){        
         //Check Player 2 has 2 tracks either (0,1, or 2) to be over 21 and under 27
         if(trackSold(tracks[0]) && trackSold(tracks[1]) || trackSold(tracks[1]) && trackSold(tracks[2]) || trackSold(2) && trackSold(tracks[0])){
             //If there are ties (0-3, 1-4, 2,5), then end the function without a win state change.
@@ -128,7 +178,7 @@ export var CaravanGame = () => {
             //check if tracks are winning
             checkForWin()
             //determine track direction
-            tracks[track].direction = readTrack(track)
+            tracks[track].direction = scaleTrack(track)
             //change to next player's turn
             turn = ( turn == 0 ? 1: 0)
         }else{
@@ -167,7 +217,7 @@ export var CaravanGame = () => {
     }
 
     //Function to determine direction of a track
-    function readTrack(track){
+    function scaleTrack(track){
         //if the track has more than one cards on it..
         if(tracks[track].cards.length >= 2){
             //iterate through array backwards until we have two cards to compare or have run out of comparable cards
